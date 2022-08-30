@@ -1,0 +1,5 @@
+GET localhost:8081/books/create?name=Сказки1&manufacturer=АСТ&year=2019
+###
+GET localhost:8081/books/create?name=Сказки2&manufacturer=АСТ&year=2015
+###
+GET localhost:8081/books/create?name=Сказки3&manufacturer=АСТ&year=2011
