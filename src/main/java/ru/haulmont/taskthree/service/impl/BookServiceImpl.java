@@ -15,20 +15,26 @@ import java.util.List;
 @Service
 @Profile("prod")
 public class BookServiceImpl implements BookService {
-    @Value("${book.defaultManufacturer}")
-    private String defaultManufacturer;
-    private BookRepository bookRepository;
+    private final String defaultManufacturer;
+
+    private final BookRepository bookRepository;
+
+    public BookServiceImpl(@Value("${book.defaultManufacturer}") String defaultManufacturer, BookRepository bookRepository) {
+        this.defaultManufacturer = defaultManufacturer;
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public List<BookDto> getAllBooks() {
         List<Book> books = bookRepository.findAll();
         List<BookDto> bookDtoList = new ArrayList<>();
         books.forEach(book -> {
-            BookDto bookDto = new BookDto();
-            bookDto.setId(book.getId());
-            bookDto.setName(book.getName());
-            bookDto.setManufacturer(defaultManufacturer);
-            bookDto.setYearOfPublishing(book.getYearOfPublishing());
+            BookDto bookDto = new BookDto.BookDtoBuilder()
+                    .setId(book.getId())
+                    .setName(book.getName())
+                    .setManufacturer(defaultManufacturer)
+                    .setYearOfPublishing(book.getYearOfPublishing())
+                    .build();
             bookDtoList.add(bookDto);
         });
         return bookDtoList;
@@ -41,10 +47,5 @@ public class BookServiceImpl implements BookService {
         book.setYearOfPublishing(bookDto.getYearOfPublishing());
         book.setManufacturer(bookDto.getManufacturer());
         bookRepository.save(book);
-    }
-
-    @Autowired
-    public void setBookRepository(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
     }
 }

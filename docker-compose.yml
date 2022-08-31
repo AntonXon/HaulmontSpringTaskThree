@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: database
+    image: postgres:12.6
+    restart: always
+    environment:
+      POSTGRES_USER: cuba
+      POSTGRES_PASSWORD: cuba
+      POSTGRES_DB: test-app
+    ports:
+      - "5432:5432"

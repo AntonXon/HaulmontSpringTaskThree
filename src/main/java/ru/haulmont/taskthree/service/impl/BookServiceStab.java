@@ -21,11 +21,12 @@ public class BookServiceStab implements BookService {
 
     @Override
     public List<BookDto> getAllBooks() {
-        BookDto bookDto = new BookDto();
-        bookDto.setId(UUID.randomUUID());
-        bookDto.setName(defaultName);
-        bookDto.setYearOfPublishing(defaultYear);
-        bookDto.setManufacturer(defaultManufacturer);
+        BookDto bookDto = new BookDto.BookDtoBuilder()
+                .setId(UUID.randomUUID())
+                .setName(defaultName)
+                .setManufacturer(defaultManufacturer)
+                .setYearOfPublishing(defaultYear)
+                .build();
         return List.of(bookDto);
     }
 
