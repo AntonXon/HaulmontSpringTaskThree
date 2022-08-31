@@ -30,31 +30,35 @@ public class Book {
         return id;
     }
 
-    public void setId(UUID id) {
+    public Book setId(UUID id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Book setName(String name) {
         this.name = name;
+        return this;
     }
 
     public int getYearOfPublishing() {
         return yearOfPublishing;
     }
 
-    public void setYearOfPublishing(int yearOfPublishing) {
+    public Book setYearOfPublishing(int yearOfPublishing) {
         this.yearOfPublishing = yearOfPublishing;
+        return this;
     }
 
     public String getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public Book setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+        return this;
     }
 }

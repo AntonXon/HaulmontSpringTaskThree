@@ -42,10 +42,10 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void createBook(BookDto bookDto) {
-        Book book = new Book();
-        book.setName(bookDto.getName());
-        book.setYearOfPublishing(bookDto.getYearOfPublishing());
-        book.setManufacturer(bookDto.getManufacturer());
+        Book book = new Book()
+                .setName(bookDto.getName())
+                .setYearOfPublishing(bookDto.getYearOfPublishing())
+                .setManufacturer(bookDto.getManufacturer());
         bookRepository.save(book);
     }
 }
